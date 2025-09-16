@@ -1,7 +1,7 @@
-# File Konfigurasi Firebase yang berisi kunci rahasia
+# Kunci Firebase - JANGAN UPLOAD
 /www/config.js
 
-# Folder dependensi Node yang ukurannya sangat besar
+# Abaikan node_modules
 /node_modules/
 
 # Folder Android yang digenerate otomatis
