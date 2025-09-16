@@ -1,0 +1,245 @@
+/* --- FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- THEME PALETTE --- */
+:root {
+    --font-header: 'IM Fell English SC', serif;
+    --font-title: 'Cinzel', serif;
+    --font-body: 'Lora', serif;
+    --color-parchment: #fdf6e3;
+    --color-ink-dark: #5c4b37;
+    --color-ink-light: #6e5b45;
+    --color-accent-gold: #c9b07a;
+    --color-accent-red: #a42a2a;
+    --color-border-fade: rgba(140, 106, 71, 0.3);
+    --mood-happy: #e6cda4;
+    --mood-calm: #a7c4bf;
+    --mood-sad: #8aa1be;
+    --mood-angry: #c88a8a;
+    --mood-proud: #d4af37;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--color-parchment);
+    color: var(--color-ink-dark);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Halaman Pembuka / Login --- */
+#welcome-screen {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #fdf6e3;
+    background:
+        radial-gradient(circle at 15% 25%, rgba(210, 195, 165, 0.25) 0%, transparent 40%),
+        radial-gradient(circle at 80% 75%, rgba(200, 185, 155, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at center, #f5eeda 0%, #e8d7b7 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.welcome-content {
+    max-width: 650px; padding: 40px 50px;
+    background-color: rgba(253, 250, 240, 0.85);
+    box-shadow: 0 0 60px 30px rgba(253, 250, 240, 0.7);
+    border: 1px solid var(--color-border-fade);
+    border-radius: 3px; animation: fadeInInk 2.5s ease-in-out; position: relative; color: var(--color-ink-dark);
+}
+.welcome-content::before, .welcome-content::after {
+    content: ''; position: absolute; width: 40px; height: 40px;
+    border-color: rgba(140, 106, 71, 0.4); border-style: solid; transition: all 0.5s ease;
+}
+.welcome-content::before { top: 15px; left: 15px; border-width: 2px 0 0 2px; }
+.welcome-content::after { bottom: 15px; right: 15px; border-width: 0 2px 2px 0; }
+.welcome-content:hover::before, .welcome-content:hover::after {
+    width: 60px; height: 60px; border-color: rgba(140, 106, 71, 0.7);
+}
+.welcome-title {
+    font-family: var(--font-header); font-size: 3.8rem; font-weight: 400; color: var(--color-ink-dark);
+    margin-bottom: 25px; text-transform: none; letter-spacing: 2px; text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+}
+.welcome-title::after {
+    content: '· ⸪ ·'; display: block; text-align: center; margin-top: 15px;
+    font-size: 1.2rem; color: #8c6a47; opacity: 0.7;
+}
+.welcome-narrative {
+    font-family: var(--font-body); font-size: 1.1rem; line-height: 1.8;
+    color: var(--color-ink-light); margin-bottom: 25px; font-style: italic;
+}
+@keyframes fadeInInk { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- Main App Styles --- */
+#main-app {
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 20px; box-sizing: border-box; width: 100%;
+}
+.app-container {
+    width: 100%; max-width: 900px; background: #fbf5e9; padding: 25px 40px;
+    border-radius: 3px; border: 1px solid var(--color-border-fade);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.app-header {
+    position: relative; text-align: center; margin-bottom: 20px;
+}
+.app-header h1 {
+    margin: 0; display: inline-block; font-family: var(--font-header);
+    color: var(--color-ink-dark); font-size: 2.5rem;
+}
+
+/* Kalender */
+.calendar-container { margin-bottom: 20px; }
+.calendar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.calendar-header h2 { font-family: var(--font-title); font-weight: 700; color: var(--color-ink-dark); }
+.calendar-header button { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-ink-light); padding: 5px 10px; }
+#monthly-stats { text-align: center; padding: 10px 15px; margin: -10px auto 15px auto; background: none; border-bottom: 1px dotted var(--color-border-fade); border-top: 1px dotted var(--color-border-fade); border-radius: 0; font-size: .9em; font-style: italic; color: var(--color-ink-light); }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.calendar-grid div { text-align: center; padding: 10px; height: 60px; display: flex; flex-direction: column; justify-content: center; align-items: center; border-radius: 3px; transition: background-color .3s; }
+.day-name { font-weight: 600; font-size: .9em; font-family: var(--font-body); }
+.day-cell { cursor: pointer; position: relative; }
+.day-cell:hover { background-color: rgba(201, 176, 122, 0.2); }
+.day-cell.today .date-number { background-color: var(--color-accent-gold); color: var(--color-ink-dark); border-radius: 50%; width: 28px; height: 28px; line-height: 28px; font-weight: 600; }
+.icon-container { display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 4px; height: 1.2rem; }
+.mood-icon { font-size: 1.2rem; }
+.menstruation-icon { font-size: 0.7rem; color: #e57373; }
+
+/* Pengaturan & Data */
+.task-manager { margin-top: 30px; padding: 20px; background: none; border: 1px dashed var(--color-border-fade); border-radius: 3px; }
+.task-manager h4 { margin-top: 0; margin-bottom: 15px; color: var(--color-ink-light); text-align: center; font-family: var(--font-title); }
+.data-management { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;}
+.data-management button { flex-grow: 1; padding: 10px; border: 1px solid var(--color-border-fade); background-color: transparent; border-radius: 3px; cursor: pointer; font-weight: 600; color: var(--color-ink-dark); transition: all .2s; font-family: var(--font-body); }
+.data-management button:hover { background-color: rgba(140, 106, 71, 0.1); }
+.data-management button i { margin-right: 8px; }
+
+/* Entri Diari */
+.diary-entry { margin-top: 30px; padding: 20px; border: 1px solid var(--color-border-fade); background-color: rgba(253, 250, 240, 0.5); border-radius: 3px; display: none; }
+.entry-date-header { text-align: center; margin-bottom: 20px; color: var(--color-ink-dark); font-family: var(--font-title); font-size: 1.5rem; }
+.feature-section { margin-bottom: 25px; }
+.feature-section h4 { margin-bottom: 15px; border-bottom: 1px solid var(--color-border-fade); padding-bottom: 8px; font-family: var(--font-title); font-weight: 700; color: var(--color-ink-light); }
+
+/* Mood Selector */
+.mood-selector { display: flex; justify-content: space-around; flex-wrap: wrap; gap: 10px; }
+.mood-option {
+    cursor: pointer; padding: 10px; border: 2px solid transparent;
+    border-radius: 10px; text-align: center; transition: all .3s; flex-grow: 1;
+}
+.mood-option i { font-size: 2rem; display: block; margin-bottom: 5px; color: var(--color-ink-light); }
+.mood-option span { font-size: 0.9em; font-family: 'Poppins', sans-serif; display: block; }
+.mood-option.selected {
+    border-color: var(--color-accent-gold); background-color: rgba(201, 176, 122, 0.1);
+}
+.mood-option.selected i, .mood-option.selected span { color: var(--color-ink-dark); }
+
+/* Penanda Siklus */
+.cycle-tracker-btn {
+    display: flex; align-items: center; padding: 12px 15px;
+    border: 2px solid rgba(224, 224, 224, 0.7); border-radius: 10px;
+    cursor: pointer; transition: all 0.3s ease; color: var(--color-ink-light);
+}
+.cycle-tracker-btn i { margin-right: 10px; font-size: 1.2rem; color: #ff8a80; }
+.cycle-tracker-btn.selected { background-color: #ffebee; border-color: #ff8a80; color: var(--color-ink-dark); }
+
+/* Ceklis & Input Harian */
+.daily-task-input-group { display: flex; gap: 10px; margin-bottom: 15px; }
+#daily-task-input { flex-grow: 1; padding: 10px; border: none; border-bottom: 1px solid var(--color-border-fade); border-radius: 0; font-size: 1rem; font-family: var(--font-body); background: transparent; }
+#daily-task-input:focus { outline: none; border-bottom-color: var(--color-ink-dark); }
+#add-daily-task-btn { padding: 0 20px; border: 1px solid var(--color-ink-light); background-color: transparent; color: var(--color-ink-light); border-radius: 3px; cursor: pointer; font-weight: 600; font-family: var(--font-body); }
+#daily-task-list { list-style: none; padding: 0; margin: 0; }
+#daily-task-list li { display: flex; align-items: center; padding: 8px 5px; border-bottom: 1px dotted var(--color-border-fade); }
+#daily-task-list label { flex-grow: 1; display: flex; align-items: center; cursor: pointer; font-family: var(--font-body); }
+#daily-task-list input[type="checkbox"] { margin-right: 12px; width: 18px; height: 18px; accent-color: var(--color-ink-dark); }
+#daily-task-list .delete-daily-task-btn { background: none; border: none; color: #aaa; cursor: pointer; font-size: 1rem; padding: 5px; margin-left: 10px; }
+#daily-task-list .delete-daily-task-btn:hover { color: var(--color-accent-red); }
+
+/* Area Catatan & Tombol Simpan */
+#notes-area { width: 100%; box-sizing: border-box; min-height: 150px; padding: 10px; border-radius: 3px; border: 1px solid var(--color-border-fade); font-family: var(--font-body); font-size: 1rem; line-height: 1.7; background: transparent; }
+#notes-area:focus { outline: none; border-color: var(--color-ink-dark); }
+#save-btn, #close-btn { display: inline-block; width: 48%; padding: 12px; border: none; border-radius: 3px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all .3s; font-family: var(--font-title); margin-top: 15px;}
+#save-btn { background-color: var(--color-accent-red); color: white; border: 1px solid #832222; }
+#close-btn { background-color: transparent; color: var(--color-ink-light); border: 1px solid var(--color-border-fade); }
+
+/* Style untuk Form Login & Tombol Autentikasi */
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-border-fade);
+    border-radius: 3px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    box-sizing: border-box;
+    background: rgba(253, 250, 240, 0.5);
+    color: var(--color-ink-dark);
+}
+.auth-input:focus {
+    outline: none;
+    border-color: var(--color-ink-dark);
+}
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 3px;
+    font-family: var(--font-title);
+    font-weight: 700;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+.auth-btn.secondary {
+    background-color: transparent;
+    border-color: var(--color-ink-light);
+    color: var(--color-ink-light);
+}
+.auth-btn.secondary:hover {
+    background-color: rgba(140, 106, 71, 0.1);
+}
+.auth-btn.google {
+    background: linear-gradient(to bottom, #6d5b46, #5c4b37);
+    color: #d1c6b8; 
+    border: 1px solid #4a3c2d;
+    border-top-color: #8a7863;
+    text-shadow: 1px 1px 1px #333;
+}
+.auth-btn.google:hover {
+    background: linear-gradient(to bottom, #7e6c57, #6d5b46);
+}
+.auth-btn.google i {
+    margin-right: 10px;
+}
+.separator {
+    font-family: var(--font-title);
+    text-align: center;
+    margin: 15px 0;
+    color: var(--color-ink-light);
+}
+
+/* Style untuk Narasi Pengantar di Halaman Utama */
+.app-introduction {
+    text-align: center;
+    font-style: italic;
+    margin: 0 auto 25px auto;
+    padding-bottom: 15px;
+    max-width: 700px;
+    color: var(--color-ink-light);
+    border-bottom: 1px dotted var(--color-border-fade);
+}
+.app-introduction p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}

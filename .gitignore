@@ -1,0 +1,17 @@
+# File Konfigurasi Firebase yang berisi kunci rahasia
+/www/config.js
+
+# Folder dependensi Node yang ukurannya sangat besar
+/node_modules/
+
+# Folder Android yang digenerate otomatis
+# Lebih baik diabaikan dan digenerate ulang jika perlu
+/android/
+
+# File-file sementara yang dibuat oleh IDE (VS Code, Android Studio)
+.idea/
+.vscode/
+
+# Hasil build (file APK)
+*.apk
+*.aab

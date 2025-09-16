@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anima Catharsis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;600&family=IM+Fell+English+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <h1 class="welcome-title">Anima Catharsis</h1>
+            <p class="welcome-narrative">
+                Selamat datang kembali. Silakan masuk untuk melanjutkan perjalananmu, atau buat akun baru jika ini adalah kunjungan pertamamu.
+            </p>
+            <div id="login-form">
+                <input type="email" id="login-email" placeholder="Alamat Email" class="auth-input">
+                <input type="password" id="login-password" placeholder="Kata Sandi" class="auth-input">
+                <button id="login-btn" class="auth-btn">Masuk</button>
+                <button id="register-btn" class="auth-btn secondary">Buat Akun Baru</button>
+            </div>
+            <p class="separator">atau</p>
+            <button id="google-login-btn" class="auth-btn google">
+                <i class="fab fa-google"></i> Masuk dengan Google
+            </button>
+        </div>
+    </div>
+
+    <div id="main-app" class="hidden">
+        <div class="app-container">
+            <div class="app-header">
+                <h1>Anima Catharsis</h1>
+            </div>
+            <div class="app-introduction">
+                <p>"Setiap kata yang kau tulis adalah langkah menuju penyucian jiwa, menemukan kembali kejernihan di tengah riuh."</p>
+            </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prev-month-btn"><i class="fas fa-chevron-left"></i></button>
+                    <h2 id="month-year-header"></h2>
+                    <button id="next-month-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div id="monthly-stats"></div>
+                <div class="calendar-grid" id="calendar-grid"></div>
+            </div>
+            <div class="task-manager">
+                <h4><i class="fas fa-cog"></i> Pengaturan & Data</h4>
+                <div class="data-management">
+                    <button id="export-btn"><i class="fas fa-file-export"></i> Ekspor Data</button>
+                    <button id="import-btn"><i class="fas fa-file-import"></i> Impor Data</button>
+                    <input type="file" id="import-file-input" accept=".json" style="display: none;">
+                    <button id="logout-btn" style="background-color: #c88a8a; color: white; border-color: #a42a2a;"><i class="fas fa-sign-out-alt"></i> Keluar</button>
+                </div>
+            </div>
+            <div class="diary-entry" id="diary-entry">
+                <h3 id="entry-date-header"></h3>
+                <div class="feature-section"><h4>Bagaimana perasaanmu hari ini?</h4><div class="mood-selector" id="mood-selector"><div class="mood-option" data-mood="happy"><i class="fas fa-smile-beam"></i><span>Senang</span></div><div class="mood-option" data-mood="calm"><i class="fas fa-smile"></i><span>Biasa</span></div><div class="mood-option" data-mood="sad"><i class="fas fa-frown"></i><span>Sedih</span></div><div class="mood-option" data-mood="angry"><i class="fas fa-angry"></i><span>Marah</span></div><div class="mood-option" data-mood="proud"><i class="fas fa-star"></i><span>Bangga</span></div></div></div>
+                <div class="feature-section"><h4>Penanda Siklus</h4><div id="menstruation-tracker" class="cycle-tracker-btn"><i class="fas fa-tint"></i><span>Tandai sebagai hari menstruasi</span></div></div>
+                <div class="feature-section"><h4>Rencana/Ceklis Hari Ini:</h4><div class="daily-task-input-group"><input type="text" id="daily-task-input" placeholder="Tulis tugas untuk hari ini..."><button id="add-daily-task-btn">Tambah</button></div><ul id="daily-task-list"></ul></div>
+                <div class="feature-section"><h4>Catatan Hari Ini:</h4><textarea id="notes-area" placeholder="Tuliskan apapun yang kamu rasakan atau pikirkan hari ini..."></textarea></div>
+                <button id="save-btn">Simpan Catatan</button><button id="close-btn">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    
+    <script src="config.js"></script>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
